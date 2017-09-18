@@ -1,5 +1,8 @@
+import os
+
 from flask import Flask, request, render_template, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
+
 import unirest
 
 
@@ -38,6 +41,9 @@ def get_random_quote():
 
     return jsonify(response.body)
 
+@app.route("/error")
+def error():
+    raise Exception("Error!")
 
 
 
@@ -46,8 +52,13 @@ if __name__ == "__main__":
     # point that we invoke the DebugToolbarExtension
     app.debug = True
 
-    # Use the DebugToolbar
-    DebugToolbarExtension(app)
+    # Use the DebugToolbar before deployment only
+    # DebugToolbarExtension(app)
 
+    # app.run(host="0.0.0.0")
 
-    app.run(host="0.0.0.0")
+    # For deployment
+    DEBUG = "NO_DEBUG" not in os.environ
+    PORT = int(os.environ.get("PORT", 5000))
+
+    app.run(host="0.0.0.0", port=PORT, debug=DEBUG)
