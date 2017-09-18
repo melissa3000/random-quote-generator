@@ -1,0 +1,157 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Random Quote Generator</title>
+
+<style>
+
+  #name {
+    color: white;
+  }
+
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+
+  body {
+    background-image: url("static/img/milky-way.jpg");
+
+    /* Full height */
+    /*height: 100%;*/
+
+    /* Center and scale the image */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 60px;
+  }
+
+  #get-quote-btn {
+    background-color: #002560;
+    align-items: center;
+    margin: 25px;
+
+  }
+
+  #quote-display-box {
+    background-color: lightgrey;
+
+    /*opacity: .5;*/
+
+/*    width: 300px;
+    border: 10px #7c4f43;
+    padding: 25px;
+    margin: 25px;
+    /*position: relative;*/
+    /*left: 200px;*/
+  }
+
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+    /*padding: 20px;*/
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10%;
+}
+
+  .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: lightgrey;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+
+<script>
+  $(document).ready(function() {
+
+    //AJAX call to server to request new quote from random quote API
+
+    function displayQuote(results) {
+      var quotes = results;
+      $('#quote').html(quotes.quote);
+      $('#author').html("- " + quotes.author);
+      // console.log(quotes);
+      // console.log(quotes.quote);
+      // console.log(quotes.author);
+    }
+
+    function getQuote() {
+      $.get('/quote', displayQuote);
+    }
+
+    getQuote();
+
+  $("#get-quote-btn").on('click', getQuote);
+
+  });
+
+</script>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12" id="name">
+    <h1>Random Quote Generator</h1>
+    </div>
+  </div>
+</div>
+
+  <div class="row" id="quote-display-box">
+    <div class="col-xs-offset-3 col-xs-9">
+      <!-- <div class="row" id="quote-display-box"> -->
+<!--     </div> -->
+
+      <h2 id="quote"></h2>
+      <h2 id="author"></h2>
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col-xs-offset-8 col-xs-12">
+      <button type="button" class="btn btn-success" id="get-quote-btn">New Quote</button>
+
+      <a class="btn btn-social-icon btn-twitter"
+      href="https://twitter.com/intent/tweet?text=I found a fun random word generator!"><span class="fa fa-twitter"></span></a>
+    </div>
+    <div class="col-xs-offset-10 col-xs-12">
+
+  </div>
+</div>
+
+
+
+
+<!-- <footer>
+    <p>An MB Production</p>
+</footer> -->
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">An MB Production</span>
+      </div>
+    </footer>
+
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
