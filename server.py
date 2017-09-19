@@ -12,9 +12,6 @@ app = Flask(__name__)
 
 # Required to use Flask sessions and the debug toolbar
 # app.secret_key = "ABC"
-# app.config['TEMPLATES_AUTO_RELOAD'] = True
-
-# app.config['SECRET_KEY'] = os.environ.get("FLASK_SECRET_KEY", "jaofep98urOSAKFDa89")
 
 
 
