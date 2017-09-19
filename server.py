@@ -13,9 +13,9 @@ app = Flask(__name__)
 
 # Required to use Flask sessions and the debug toolbar
 # app.secret_key = "ABC"
-app.config['TEMPLATES_AUTO_RELOAD'] = True
+# app.config['TEMPLATES_AUTO_RELOAD'] = True
 
-app.config['SECRET_KEY'] = os.environ.get("FLASK_SECRET_KEY", "jaofep98urOSAKFDa89")
+# app.config['SECRET_KEY'] = os.environ.get("FLASK_SECRET_KEY", "jaofep98urOSAKFDa89")
 
 
 
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     # app.run(host="0.0.0.0")
 
     # For deployment
-    DEBUG = "NO_DEBUG" not in os.environ
     PORT = int(os.environ.get("PORT", 5000))
+    DEBUG = "NO_DEBUG" not in os.environ
 
     app.run(host="0.0.0.0", port=PORT, debug=DEBUG)
