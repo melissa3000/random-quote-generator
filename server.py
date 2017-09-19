@@ -12,8 +12,10 @@ app = Flask(__name__)
 
 
 # Required to use Flask sessions and the debug toolbar
-app.secret_key = "ABC"
+# app.secret_key = "ABC"
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
+app.config['SECRET_KEY'] = os.environ.get("FLASK_SECRET_KEY", "jaofep98urOSAKFDa89")
 
 
 
@@ -50,7 +52,7 @@ def error():
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the
     # point that we invoke the DebugToolbarExtension
-    app.debug = True
+    # app.debug = True
 
     # Use the DebugToolbar before deployment only
     # DebugToolbarExtension(app)
