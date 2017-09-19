@@ -1,14 +1,13 @@
 import os
 
 from flask import Flask, request, render_template, jsonify
-from flask_debugtoolbar import DebugToolbarExtension
+# from flask_debugtoolbar import DebugToolbarExtension
 
 import unirest
 
 
 
 app = Flask(__name__)
-
 
 
 # Required to use Flask sessions and the debug toolbar
